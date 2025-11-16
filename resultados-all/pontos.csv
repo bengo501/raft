@@ -1,0 +1,5 @@
+arquivo,clients,throughput,latencia_ms
+resultados-lev.json,3,270.1,2.1017996421078613
+resultados-med.json,3,140.275,2.0242919265728037
+resultados-pes.json,3,179.86666666666667,2.0903619965406475
+resultados.json,3,539.9,2.108223374699018
