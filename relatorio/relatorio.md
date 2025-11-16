@@ -8,7 +8,7 @@
 
     O trabalho foi desenvolvido sobre o repositório oficial**go.etcd.io/raft/v3**, uma implementação em Go do algoritmo de consenso Raft mantida pela comunidade etcd. Este é um dos repositórios de referência para Raft, amplamente utilizado em sistemas distribuídos de produção como o próprio etcd (sistema de armazenamento distribuído de chave-valor usado pelo Kubernetes).
 
-A biblioteca `go.etcd.io/raft/v3` fornece:
+A biblioteca `go.etcd.io/raft/v3` fornece:	
 
 **
     Máquina de estados Raft**: Implementação completa do protocolo (eleição de líder, replicação de log, segurança).
@@ -27,15 +27,16 @@ Sobre esta base sólida, desenvolvemos:
 **
     Servidor Raft personalizado** (`cmd/raftnode/main.go`): Encapsula a máquina de estados Raft, implementa transporte HTTP para comunicação entre réplicas, expõe API REST para operações de clientes e gerencia uma máquina de estados simples (KV store in-memory).
 
-    **Gerador de carga** (`cmd/loadgen/main.go`): Cliente que segue o pseudocódigo do enunciado, gerando carga controlada e coletando métricas detalhadas.
+**
+    Gerador de carga** (`cmd/loadgen/main.go`): Cliente que segue o pseudocódigo do enunciado, gerando carga controlada e coletando métricas detalhadas.
 
 ### 1.2 AMBIENTE DE EXECUÇÃO
 
-Devido à necessidade de realizar múltiplas execuções controladas e repetíveis, os experimentos foram conduzidos em ambiente local, com as três réplicas Raft executando em processos separados na mesma máquina, mas comunicando-se via protocolo HTTP em portas distintas (9001, 9002, 9003). Embora não distribuído fisicamente em máquinas diferentes de um laboratório, o sistema mantém integralmente a arquitetura e os protocolos de comunicação de um cluster distribuído real. Cada réplica opera como processo independente, com sua própria instância da máquina de estados Raft, storage isolado e endpoints HTTP para comunicação entre pares e com clientes. Esta configuração permite a avaliação fidedigna do desempenho do protocolo Raft, capturando com precisão as métricas de consenso, latências de rede local (via loopback) e comportamento de eleição de líder, atendendo aos objetivos de medição de vazão e latência especificados no enunciado.
+    Devido à necessidade de realizar múltiplas execuções controladas e repetíveis, os experimentos foram conduzidos em ambiente local, com as três réplicas Raft executando em processos separados na mesma máquina, mas comunicando-se via protocolo HTTP em portas distintas (9001, 9002, 9003). Embora não distribuído fisicamente em máquinas diferentes de um laboratório, o sistema mantém integralmente a arquitetura e os protocolos de comunicação de um cluster distribuído real. Cada réplica opera como processo independente, com sua própria instância da máquina de estados Raft, storage isolado e endpoints HTTP para comunicação entre pares e com clientes. Esta configuração permite a avaliação fidedigna do desempenho do protocolo Raft, capturando com precisão as métricas de consenso, latências de rede local (via loopback) e comportamento de eleição de líder, atendendo aos objetivos de medição de vazão e latência especificados no enunciado.
 
-### 1.3 METODOLOGIA EXPERIMENTAL
+### 1.3 METODOLOGIA 
 
-Cada execução seguiu rigorosamente o pseudocódigo solicitado: múltiplos processos cliente geram carga controlada, registram timestamps, calculam latências individuais e agregam métricas de vazão, latência média e função de distribuição cumulativa (CDF). Entre cada experimento, o sistema foi completamente terminado e reiniciado, garantindo condições iniciais idênticas e forçando nova eleição de líder em cada teste, conforme especificado no enunciado.
+    Cada execução seguiu o pseudocódigo solicitado: múltiplos processos cliente geram carga controlada, registram timestamps, calculam latências individuais e agregam métricas de vazão, latência média e função de distribuição cumulativa (CDF). Entre cada execução, o sistema foi completamente terminado e reiniciado, para garantir condições iniciais iguais e forçando nova eleição de líder em cada teste.
 
 ## 2. EXECUÇÃO 1: CARGA REFERÊNCIA (30 SEGUNDOS)
 
@@ -198,13 +199,17 @@ Ao analisar as quatro execuções, observa-se que:
 
 ### 8.1 ANÁLISE DOS RESULTADOS
 
-    **Vazão**: A vazão apresenta uma relação inversa com a duração do experimento quando o sistema opera por períodos curtos. A execução de referência (30 s) alcançou a maior vazão (540 ops/s) porque o cluster teve menos interrupções eleitorais proporcionalmente ao tempo total. À medida que a duração aumenta (60 s → 120 s), a vazão cai (270 → 140 ops/s) pois mais tempo de observação captura mais transições de líder. Porém, na execução pesada (180 s, 128 B), a vazão sobe para 180 ops/s porque o tempo ainda maior permitiu que o cluster se estabilizasse após as eleições iniciais e acumulasse mais requisições comprometidas.
+**
+    Vazão**: A vazão apresenta uma relação inversa com a duração do experimento quando o sistema opera por períodos curtos. A execução de referência (30 s) alcançou a maior vazão (540 ops/s) porque o cluster teve menos interrupções eleitorais proporcionalmente ao tempo total. À medida que a duração aumenta (60 s → 120 s), a vazão cai (270 → 140 ops/s) pois mais tempo de observação captura mais transições de líder. Porém, na execução pesada (180 s, 128 B), a vazão sobe para 180 ops/s porque o tempo ainda maior permitiu que o cluster se estabilizasse após as eleições iniciais e acumulasse mais requisições comprometidas.
 
-    **Latência**: As latências permaneceram extremamente consistentes em todas as execuções, oscilando entre 2,02 e 2,11 ms de média. Os percentis p50, p95 e p99 também permaneceram estáveis (p95 entre 2,74 e 3,10 ms; p99 entre 3,28 e 4,02 ms), indicando que o protocolo Raft mantém tempos de resposta previsíveis independente da carga. Crucialmente, **não há evidência de degradação de latência mesmo com payloads maiores** (32 B → 128 B), o que sugere que o gargalo do sistema não está no processamento de dados, mas sim nos períodos de eleição e convergência.
+**
+    Latência**: As latências permaneceram extremamente consistentes em todas as execuções, oscilando entre 2,02 e 2,11 ms de média. Os percentis p50, p95 e p99 também permaneceram estáveis (p95 entre 2,74 e 3,10 ms; p99 entre 3,28 e 4,02 ms), indicando que o protocolo Raft mantém tempos de resposta previsíveis independente da carga. Crucialmente, **não há evidência de degradação de latência mesmo com payloads maiores** (32 B → 128 B), o que sugere que o gargalo do sistema não está no processamento de dados, mas sim nos períodos de eleição e convergência.
 
-    **Ponto de inflexão**: Não foi observado um ponto claro onde a latência sobe rapidamente. Ao contrário, a latência mantém-se praticamente constante (~2 ms) em todas as execuções. Isso indica que o sistema está operando bem dentro de sua capacidade e que as limitações de vazão observadas são causadas por reinícios do cluster entre execuções e períodos iniciais de eleição, não por saturação do sistema.
+**
+    Ponto de inflexão**: Não foi observado um ponto claro onde a latência sobe rapidamente. Ao contrário, a latência mantém-se praticamente constante (~2 ms) em todas as execuções. Isso indica que o sistema está operando bem dentro de sua capacidade e que as limitações de vazão observadas são causadas por reinícios do cluster entre execuções e períodos iniciais de eleição, não por saturação do sistema.
 
-    **Impacto do reinício**: Conforme exigido pelo enunciado, o sistema foi completamente terminado e reiniciado entre cada execução. Isso significa que cada teste começou com um processo de eleição de líder, que pode levar alguns segundos e gerar os erros observados nos campos `error_count`. Esses períodos transitórios afetam mais as execuções curtas (30 s, 60 s) proporcionalmente, enquanto execuções longas (180 s) têm mais tempo para se estabilizar e acumular requisições bem-sucedidas após a eleição inicial.
+**
+    Impacto do reinício**: Conforme exigido pelo enunciado, o sistema foi completamente terminado e reiniciado entre cada execução. Isso significa que cada teste começou com um processo de eleição de líder, que pode levar alguns segundos e gerar os erros observados nos campos `error_count`. Esses períodos transitórios afetam mais as execuções curtas (30 s, 60 s) proporcionalmente, enquanto execuções longas (180 s) têm mais tempo para se estabilizar e acumular requisições bem-sucedidas após a eleição inicial.
 
 ## 9. GRÁFICO VAZÃO X LATÊNCIA
 
@@ -214,11 +219,14 @@ O gráfico abaixo mostra a relação entre vazão (eixo x) e latência média (e
 
 Cada ponto representa uma execução completa do cluster. Nota-se que:
 
-    **Cluster horizontal de pontos**: Todos os pontos concentram-se na faixa de 2,0 a 2,1 ms de latência, independente da vazão, confirmando a estabilidade do sistema.
+**
+    Cluster horizontal de pontos**: Todos os pontos concentram-se na faixa de 2,0 a 2,1 ms de latência, independente da vazão, confirmando a estabilidade do sistema.
 
-    **Variação na vazão**: A vazão varia de ~140 a ~540 ops/s, refletindo principalmente o tempo de observação e o número proporcional de requisições comprometidas.
+**
+    Variação na vazão**: A vazão varia de ~140 a ~540 ops/s, refletindo principalmente o tempo de observação e o número proporcional de requisições comprometidas.
 
-    **Ausência de trade-off latência/vazão**: Não há o padrão típico onde maior vazão causa maior latência. Isso indica que o sistema não atingiu seu limite de saturação em nenhuma das execuções.
+**
+    Ausência de trade-off latência/vazão**: Não há o padrão típico onde maior vazão causa maior latência. Isso indica que o sistema não atingiu seu limite de saturação em nenhuma das execuções.
 
 Os dados consolidados estão disponíveis em:
 
