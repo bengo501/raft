@@ -1,0 +1,562 @@
+{
+  "total_requests": 4108,
+  "throughput_ops": 68.46666666666667,
+  "avg_latency_ms": 12.659285540408959,
+  "duration_sec": 60,
+  "clients": [
+    {
+      "id": 0,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.672888349514562,
+      "errors": 3047
+    },
+    {
+      "id": 1,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.636346341463415,
+      "errors": 3045
+    },
+    {
+      "id": 2,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.65609223300971,
+      "errors": 3044
+    },
+    {
+      "id": 3,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.640058252427183,
+      "errors": 3046
+    },
+    {
+      "id": 4,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.679829268292682,
+      "errors": 3044
+    },
+    {
+      "id": 5,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.680434146341463,
+      "errors": 3045
+    },
+    {
+      "id": 6,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.61360975609756,
+      "errors": 3044
+    },
+    {
+      "id": 7,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.650199029126213,
+      "errors": 3044
+    },
+    {
+      "id": 8,
+      "requests": 207,
+      "throughput_ops": 3.45,
+      "avg_latency_ms": 12.616922705314009,
+      "errors": 3041
+    },
+    {
+      "id": 9,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.671624390243903,
+      "errors": 3049
+    },
+    {
+      "id": 10,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.641258536585367,
+      "errors": 3045
+    },
+    {
+      "id": 11,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.704650485436893,
+      "errors": 3044
+    },
+    {
+      "id": 12,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.610864077669904,
+      "errors": 3044
+    },
+    {
+      "id": 13,
+      "requests": 204,
+      "throughput_ops": 3.4,
+      "avg_latency_ms": 12.654583333333333,
+      "errors": 3051
+    },
+    {
+      "id": 14,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.689480582524272,
+      "errors": 3044
+    },
+    {
+      "id": 15,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.67359512195122,
+      "errors": 3045
+    },
+    {
+      "id": 16,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.59700487804878,
+      "errors": 3046
+    },
+    {
+      "id": 17,
+      "requests": 206,
+      "throughput_ops": 3.433333333333333,
+      "avg_latency_ms": 12.697771844660194,
+      "errors": 3045
+    },
+    {
+      "id": 18,
+      "requests": 204,
+      "throughput_ops": 3.4,
+      "avg_latency_ms": 12.683132352941175,
+      "errors": 3045
+    },
+    {
+      "id": 19,
+      "requests": 205,
+      "throughput_ops": 3.4166666666666665,
+      "avg_latency_ms": 12.71559512195122,
+      "errors": 3045
+    }
+  ],
+  "percentiles_ms": {
+    "p50": 12.589,
+    "p75": 12.971,
+    "p90": 13.384,
+    "p95": 13.706,
+    "p99": 15.241
+  },
+  "cdf": [
+    {
+      "latency_ms": 11.369,
+      "probability": 0.010223953261927946
+    },
+    {
+      "latency_ms": 11.488,
+      "probability": 0.02020447906523856
+    },
+    {
+      "latency_ms": 11.558,
+      "probability": 0.03018500486854917
+    },
+    {
+      "latency_ms": 11.652,
+      "probability": 0.04016553067185979
+    },
+    {
+      "latency_ms": 11.745,
+      "probability": 0.0501460564751704
+    },
+    {
+      "latency_ms": 11.842,
+      "probability": 0.060126582278481014
+    },
+    {
+      "latency_ms": 11.933,
+      "probability": 0.07010710808179163
+    },
+    {
+      "latency_ms": 11.959,
+      "probability": 0.08008763388510223
+    },
+    {
+      "latency_ms": 11.977,
+      "probability": 0.09006815968841285
+    },
+    {
+      "latency_ms": 11.988,
+      "probability": 0.10004868549172347
+    },
+    {
+      "latency_ms": 12.004,
+      "probability": 0.11002921129503408
+    },
+    {
+      "latency_ms": 12.025,
+      "probability": 0.1200097370983447
+    },
+    {
+      "latency_ms": 12.036,
+      "probability": 0.1299902629016553
+    },
+    {
+      "latency_ms": 12.046,
+      "probability": 0.13997078870496593
+    },
+    {
+      "latency_ms": 12.053,
+      "probability": 0.15019474196689386
+    },
+    {
+      "latency_ms": 12.061,
+      "probability": 0.16017526777020447
+    },
+    {
+      "latency_ms": 12.069,
+      "probability": 0.1701557935735151
+    },
+    {
+      "latency_ms": 12.077,
+      "probability": 0.1801363193768257
+    },
+    {
+      "latency_ms": 12.087,
+      "probability": 0.19011684518013633
+    },
+    {
+      "latency_ms": 12.096,
+      "probability": 0.20009737098344693
+    },
+    {
+      "latency_ms": 12.102,
+      "probability": 0.21007789678675753
+    },
+    {
+      "latency_ms": 12.112,
+      "probability": 0.22005842259006816
+    },
+    {
+      "latency_ms": 12.126,
+      "probability": 0.23003894839337877
+    },
+    {
+      "latency_ms": 12.148,
+      "probability": 0.2400194741966894
+    },
+    {
+      "latency_ms": 12.156,
+      "probability": 0.25
+    },
+    {
+      "latency_ms": 12.165,
+      "probability": 0.2599805258033106
+    },
+    {
+      "latency_ms": 12.174,
+      "probability": 0.2699610516066212
+    },
+    {
+      "latency_ms": 12.198,
+      "probability": 0.27994157740993186
+    },
+    {
+      "latency_ms": 12.219,
+      "probability": 0.2901655306718598
+    },
+    {
+      "latency_ms": 12.235,
+      "probability": 0.3001460564751704
+    },
+    {
+      "latency_ms": 12.262,
+      "probability": 0.310126582278481
+    },
+    {
+      "latency_ms": 12.287,
+      "probability": 0.3201071080817916
+    },
+    {
+      "latency_ms": 12.324,
+      "probability": 0.33008763388510226
+    },
+    {
+      "latency_ms": 12.339,
+      "probability": 0.34006815968841286
+    },
+    {
+      "latency_ms": 12.374,
+      "probability": 0.35004868549172347
+    },
+    {
+      "latency_ms": 12.391,
+      "probability": 0.36002921129503407
+    },
+    {
+      "latency_ms": 12.433,
+      "probability": 0.37000973709834467
+    },
+    {
+      "latency_ms": 12.457,
+      "probability": 0.37999026290165533
+    },
+    {
+      "latency_ms": 12.501,
+      "probability": 0.38997078870496593
+    },
+    {
+      "latency_ms": 12.516,
+      "probability": 0.39995131450827653
+    },
+    {
+      "latency_ms": 12.529,
+      "probability": 0.40993184031158714
+    },
+    {
+      "latency_ms": 12.536,
+      "probability": 0.41991236611489774
+    },
+    {
+      "latency_ms": 12.543,
+      "probability": 0.4301363193768257
+    },
+    {
+      "latency_ms": 12.549,
+      "probability": 0.44011684518013633
+    },
+    {
+      "latency_ms": 12.554,
+      "probability": 0.45009737098344693
+    },
+    {
+      "latency_ms": 12.562,
+      "probability": 0.46007789678675753
+    },
+    {
+      "latency_ms": 12.573,
+      "probability": 0.47005842259006814
+    },
+    {
+      "latency_ms": 12.579,
+      "probability": 0.4800389483933788
+    },
+    {
+      "latency_ms": 12.582,
+      "probability": 0.4900194741966894
+    },
+    {
+      "latency_ms": 12.589,
+      "probability": 0.5
+    },
+    {
+      "latency_ms": 12.596,
+      "probability": 0.5099805258033107
+    },
+    {
+      "latency_ms": 12.601,
+      "probability": 0.5199610516066212
+    },
+    {
+      "latency_ms": 12.607,
+      "probability": 0.5299415774099319
+    },
+    {
+      "latency_ms": 12.615,
+      "probability": 0.5399221032132424
+    },
+    {
+      "latency_ms": 12.623,
+      "probability": 0.5499026290165531
+    },
+    {
+      "latency_ms": 12.634,
+      "probability": 0.5598831548198637
+    },
+    {
+      "latency_ms": 12.638,
+      "probability": 0.5698636806231743
+    },
+    {
+      "latency_ms": 12.649,
+      "probability": 0.5800876338851022
+    },
+    {
+      "latency_ms": 12.66,
+      "probability": 0.5900681596884129
+    },
+    {
+      "latency_ms": 12.672,
+      "probability": 0.6000486854917235
+    },
+    {
+      "latency_ms": 12.679,
+      "probability": 0.6100292112950341
+    },
+    {
+      "latency_ms": 12.687,
+      "probability": 0.6200097370983447
+    },
+    {
+      "latency_ms": 12.695,
+      "probability": 0.6299902629016553
+    },
+    {
+      "latency_ms": 12.705,
+      "probability": 0.6399707887049659
+    },
+    {
+      "latency_ms": 12.709,
+      "probability": 0.6499513145082765
+    },
+    {
+      "latency_ms": 12.721,
+      "probability": 0.6599318403115871
+    },
+    {
+      "latency_ms": 12.737,
+      "probability": 0.6699123661148978
+    },
+    {
+      "latency_ms": 12.76,
+      "probability": 0.6798928919182083
+    },
+    {
+      "latency_ms": 12.789,
+      "probability": 0.689873417721519
+    },
+    {
+      "latency_ms": 12.806,
+      "probability": 0.6998539435248295
+    },
+    {
+      "latency_ms": 12.849,
+      "probability": 0.7098344693281402
+    },
+    {
+      "latency_ms": 12.866,
+      "probability": 0.7200584225900681
+    },
+    {
+      "latency_ms": 12.883,
+      "probability": 0.7300389483933788
+    },
+    {
+      "latency_ms": 12.933,
+      "probability": 0.7400194741966893
+    },
+    {
+      "latency_ms": 12.971,
+      "probability": 0.75
+    },
+    {
+      "latency_ms": 13.019,
+      "probability": 0.7599805258033107
+    },
+    {
+      "latency_ms": 13.057,
+      "probability": 0.7699610516066212
+    },
+    {
+      "latency_ms": 13.079,
+      "probability": 0.7799415774099319
+    },
+    {
+      "latency_ms": 13.105,
+      "probability": 0.7899221032132424
+    },
+    {
+      "latency_ms": 13.125,
+      "probability": 0.7999026290165531
+    },
+    {
+      "latency_ms": 13.149,
+      "probability": 0.8098831548198637
+    },
+    {
+      "latency_ms": 13.163,
+      "probability": 0.8198636806231743
+    },
+    {
+      "latency_ms": 13.187,
+      "probability": 0.8298442064264849
+    },
+    {
+      "latency_ms": 13.219,
+      "probability": 0.8398247322297955
+    },
+    {
+      "latency_ms": 13.235,
+      "probability": 0.8498052580331061
+    },
+    {
+      "latency_ms": 13.258,
+      "probability": 0.8600292112950341
+    },
+    {
+      "latency_ms": 13.276,
+      "probability": 0.8700097370983447
+    },
+    {
+      "latency_ms": 13.3,
+      "probability": 0.8799902629016553
+    },
+    {
+      "latency_ms": 13.353,
+      "probability": 0.8899707887049659
+    },
+    {
+      "latency_ms": 13.384,
+      "probability": 0.8999513145082765
+    },
+    {
+      "latency_ms": 13.433,
+      "probability": 0.9099318403115871
+    },
+    {
+      "latency_ms": 13.521,
+      "probability": 0.9199123661148978
+    },
+    {
+      "latency_ms": 13.605,
+      "probability": 0.9298928919182083
+    },
+    {
+      "latency_ms": 13.667,
+      "probability": 0.939873417721519
+    },
+    {
+      "latency_ms": 13.706,
+      "probability": 0.9498539435248295
+    },
+    {
+      "latency_ms": 13.817,
+      "probability": 0.9598344693281402
+    },
+    {
+      "latency_ms": 13.914,
+      "probability": 0.9698149951314509
+    },
+    {
+      "latency_ms": 14.418,
+      "probability": 0.9797955209347614
+    },
+    {
+      "latency_ms": 15.241,
+      "probability": 0.9897760467380721
+    },
+    {
+      "latency_ms": 27.146,
+      "probability": 1
+    }
+  ],
+  "error_count": 60903,
+  "client_count": 20,
+  "payload_bytes": 32,
+  "delay_ms": 0,
+  "timestamp": "2025-11-16T14:45:04.7337119Z"
+}
