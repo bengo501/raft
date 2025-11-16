@@ -29,9 +29,13 @@ Sobre esta base sólida, desenvolvemos:
 
     **Gerador de carga** (`cmd/loadgen/main.go`): Cliente que segue o pseudocódigo do enunciado, gerando carga controlada e coletando métricas detalhadas.
 
-### 1.2 METODOLOGIA
+### 1.2 AMBIENTE DE EXECUÇÃO
 
-    Cada execução seguiu o pseudocódigo solicitado: múltiplos processos cliente geram carga controlada, registram timestamps, calculam latências individuais e agregam métricas de vazão, latência média e função de distribuição cumulativa (CDF). Entre cada experimento, o sistema foi completamente terminado e reiniciado, garantindo condições iniciais idênticas e forçando nova eleição de líder em cada teste.
+Devido à necessidade de realizar múltiplas execuções controladas e repetíveis, os experimentos foram conduzidos em ambiente local, com as três réplicas Raft executando em processos separados na mesma máquina, mas comunicando-se via protocolo HTTP em portas distintas (9001, 9002, 9003). Embora não distribuído fisicamente em máquinas diferentes de um laboratório, o sistema mantém integralmente a arquitetura e os protocolos de comunicação de um cluster distribuído real. Cada réplica opera como processo independente, com sua própria instância da máquina de estados Raft, storage isolado e endpoints HTTP para comunicação entre pares e com clientes. Esta configuração permite a avaliação fidedigna do desempenho do protocolo Raft, capturando com precisão as métricas de consenso, latências de rede local (via loopback) e comportamento de eleição de líder, atendendo aos objetivos de medição de vazão e latência especificados no enunciado.
+
+### 1.3 METODOLOGIA EXPERIMENTAL
+
+Cada execução seguiu rigorosamente o pseudocódigo solicitado: múltiplos processos cliente geram carga controlada, registram timestamps, calculam latências individuais e agregam métricas de vazão, latência média e função de distribuição cumulativa (CDF). Entre cada experimento, o sistema foi completamente terminado e reiniciado, garantindo condições iniciais idênticas e forçando nova eleição de líder em cada teste, conforme especificado no enunciado.
 
 ## 2. EXECUÇÃO 1: CARGA REFERÊNCIA (30 SEGUNDOS)
 
